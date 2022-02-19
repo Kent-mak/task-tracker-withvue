@@ -1,16 +1,56 @@
 <template>
-  <h1>Hello Vue</h1>
+  <div class="container">
+    <HeaderItem  title="Task Tracker" />
+    <TasksItem @toggle-reminder="toggleReminder($event)" @delete-task="deleteTask($event)" :tasks="tasks" />
+  </div>
+  
 </template>
 
 <script>
-
-
-export default {
-  name: 'App',
-  components: {
-    
+  import HeaderItem from './components/Header.vue'
+  import TasksItem from './components/Tasks.vue'
+  export default {
+    name: 'App',
+    components: {
+      HeaderItem,
+      TasksItem,
+    },
+    data(){
+      return{
+        tasks: []
+      }
+    },
+    methods: {
+      deleteTask(id){
+        this.tasks = this.tasks.filter((task) => {
+            return task.id !== id
+        })
+      },
+      toggleReminder(id){
+        this.tasks.forEach((task) => {
+          task.id === id ? task.reminder = !task.reminder:""  
+        })
+      }
+    },
+    created(){
+      this.tasks = [
+        {
+          id: 1,
+          name: 'FRC-Project due date',
+          date: '2/19/2022',
+          reminder: true
+        },
+        {
+          id: 2,
+          name: 'Science-Fair report',
+          date: '2/28/2022',
+          reminder: true
+        }
+      ]
+    }
   }
-}
+
+
 </script>
 
 <style>
