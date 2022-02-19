@@ -1,49 +1,47 @@
 <template>
-    <div>
-        <b-card @submit="onSubmit" >
-            <b-form-group
-                label-cols-lg="3"
-                label="Add New Task"
-                label-size="lg"
-                label-class="font-weight-bold pt-0"
-                class="mb-0"
-            >
-                <b-form-group
-                    label="Task Name:"
-                    label-for="nested-taskName"
-                    label-cols-sm="3"
-                    label-align-sm="right"
-                >
-                    <b-form-input id="nested-taskName" v-model="name"></b-form-input>
-                </b-form-group>
+    <div class="card text-left">
+        <div class="card-header">
+            New Task
+        </div>
+        <div class="card-body">
+            <form  @submit="onSubmit" >
+                <!-- task name -->
+                <div class="row mb-3">
+                    <label for="task-name" class="col-sm-2 col-form-label">Task Name</label>
+                    <div class="col-sm-10">
+                        <input  v-model="name" type="text" class="form-control" id="task-name" placeholder="enter task">
+                    </div>
+                </div>
+                    
                 <!-- date -->
-                <b-form-group
-                    label="Due Date:"
-                    label-for="nested-date"
-                    label-cols-sm="3"
-                    label-align-sm="right"
-                >
-                    <b-form-datepicker id="nested-date" v-model="date"></b-form-datepicker>
-                </b-form-group>
-
+                <div class="row mb-3 ">
+                    <label for="date" class="col-sm-2 col-form-label">Due Date</label>
+                    <div class="col-sm-10">
+                        <input v-model="date" type="date" class="form-control" id="date" placeholder="DD/MM/YY">
+                    </div>
+                </div>
+            
                 <!-- reminder -->
-                <b-form-checkbox
-                    id="checkbox-1"
-                    v-model="reminder"
-                    name="checkbox-1"
-                    value=true
-                    unchecked-value=false
-                >
-                Enable Reminder
-                </b-form-checkbox>
+                <div class="row mb-3 ms-1">
+                    <div class="form-check ">
+                        <input v-model="reminder" class="form-check-input" type="checkbox" value="" id="reminder-checkbox">
+                        <label class="form-check-label" for="reminder-checkbox">
+                            Reminder
+                        </label>
+                        
+                    </div>
+                </div>
+            
+                <!-- save btn -->
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit">Save Task</button>
+                </div>
+                
 
-            </b-form-group>
-
-            <!-- save btn -->
-            <b-button id="saveTask" block type="submit" >Save Task</b-button>
-
-        </b-card>
+            </form>
+        </div>
     </div>
+    <br>
 </template>
 
 <script>

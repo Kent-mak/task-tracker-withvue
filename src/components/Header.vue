@@ -1,14 +1,14 @@
 <template>
     <header>
         <h1>{{title}}</h1>
-        <ButtonItem text="Add Tasks" color="#00ced1	" />
+        <AddTask text="Add Task" color="#00ced1	" />
 
     </header>
     
 </template>
 
 <script>
-import ButtonItem from './Button.vue'
+import AddTask from './NewTaskButton.vue'
 
 export default {
     name: 'HeaderItem',
@@ -18,7 +18,7 @@ export default {
         }
     },
     components: {
-        ButtonItem,
+        AddTask,
     }
 }
 </script>

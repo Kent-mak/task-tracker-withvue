@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name: 'ButtonItem',
+    name: 'AddTask',
     props: {
         text: String,
         color: String
