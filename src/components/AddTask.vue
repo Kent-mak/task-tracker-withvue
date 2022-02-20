@@ -75,7 +75,8 @@
                 this.reminder = false
 
             },
-        }
+        },
+        emits: ['add-task']
     }
 </script>
 

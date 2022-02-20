@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <HeaderItem  title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+    <HeaderItem  @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="isShown" />
+    <div v-if="isShown">
+    <AddTask @add-task="addTask($event)" /> 
+    </div>
+    
     <TasksItem @toggle-reminder="toggleReminder($event)" @delete-task="deleteTask($event)" :tasks="tasks" />
     
   </div>
@@ -21,7 +24,8 @@
     },
     data(){
       return{
-        tasks: []
+        tasks: [],
+        isShown: false,
       }
     },
     methods: {
@@ -36,7 +40,12 @@
         })
       },
       addTask(newTask){
-        this.tasks.push(newTask)
+        // this.tasks.push(newTask)
+        console.log(newTask)
+      },
+      toggleAddTask(){
+        this.isShown = !this.isShown
+        console.log(this.isShown)
       },
     },
     created(){

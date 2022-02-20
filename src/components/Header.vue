@@ -1,25 +1,31 @@
 <template>
     <header>
         <h1>{{title}}</h1>
-        <AddTask text="Add Task" color="#00ced1	" />
+        <AddTaskBtn 
+            @btn-click="$emit('toggle-add-task')"  
+            :text=" showAddTask ? 'Close':'Add Task'" 
+            :color=" showAddTask ? 'red' : '#00ced1'" 
+        />
 
     </header>
     
 </template>
 
 <script>
-import AddTask from './NewTaskButton.vue'
+import AddTaskBtn from './AddTaskButton.vue'
 
 export default {
     name: 'HeaderItem',
     props: {
         title: {
             type: String,
-        }
+        },
+        showAddTask: Boolean
     },
     components: {
-        AddTask,
-    }
+        AddTaskBtn,
+    },
+    emits: ['toggle-add-task']
 }
 </script>
 

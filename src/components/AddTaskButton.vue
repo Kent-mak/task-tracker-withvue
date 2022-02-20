@@ -4,16 +4,18 @@
 
 <script>
 export default {
-    name: 'AddTask',
+    name: 'AddTaskBtn',
     props: {
+
         text: String,
         color: String
     },
     methods: {
         onClick(){
-            console.log('clicked')
+            this.$emit('btn-click')
         }
-    }
+    },
+    // emits: ['toggle-add-task']
 }
 </script>
 
